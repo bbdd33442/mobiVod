@@ -1,0 +1,78 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+   <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme"><item name="android:windowNoTitle">true</item> 
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="TabButton1">
+		<item name="android:textSize">12.8dip</item>
+		<item name="android:gravity">center_horizontal</item>
+		<item name="android:drawableTop">@drawable/tabbuttonstyle</item>
+		<item name="android:button">@null</item>
+		<item name="android:drawablePadding">-10dip</item>
+		<item name="android:textColor">@color/yanse</item>
+		<item name="android:layout_weight">1.0</item>
+		<item name="android:paddingTop">3.0dip</item>
+		<item name="android:paddingBottom">2.0dip</item>
+	</style>
+	 <style name="TabButton2">
+		<item name="android:textSize">12.8dip</item>
+		<item name="android:gravity">center_horizontal</item>
+		<item name="android:drawableTop">@drawable/tabbuttonstyle</item>
+		<item name="android:button">@null</item>
+		<item name="android:drawablePadding">-10dip</item>
+		<item name="android:textColor">@color/yanse</item>
+		<item name="android:layout_weight">1.0</item>
+		<item name="android:paddingTop">3.0dip</item>
+		<item name="android:paddingBottom">2.0dip</item>
+	</style>
+	 <style name="TabButton3">
+		<item name="android:textSize">12.8dip</item>
+		<item name="android:gravity">center_horizontal</item>
+		<item name="android:drawableTop">@drawable/tabbuttonstyle</item>
+		<item name="android:button">@null</item>
+		<item name="android:drawablePadding">-10dip</item>
+		<item name="android:textColor">@color/yanse</item>
+		<item name="android:layout_weight">1.0</item>
+		<item name="android:paddingTop">3.0dip</item>
+		<item name="android:paddingBottom">2.0dip</item>
+	</style>
+	    <style name="remoteActivity_text">
+        <item name="android:textColor">#ffacacac</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+    
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <style name="MyDialogStyleBottom" parent="android:Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/AnimBottom</item>
+        <item name="android:windowFrame">@null</item>
+ 	<!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+ 	<!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item>
+ 	<!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+ 	<!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+ 	<!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+ 	<!-- 模糊 -->
+    </style>
+</resources>

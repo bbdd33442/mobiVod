@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+  <RelativeLayout 
+    android:id="@+id/pull_to_refresh_head"  
+    android:layout_width="fill_parent"  
+    android:layout_height="60dip">  
+  <RelativeLayout 
+    android:layout_width="fill_parent"  
+    android:layout_height="60dip"
+    android:background="#fafafa" >  
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:text="下拉刷新" />
+
+            <ImageView
+                android:id="@+id/arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/description"
+                android:src="@drawable/main_refresh" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="30dip"
+                android:layout_height="30dip"
+                android:visibility="gone"  
+                android:layout_alignLeft="@+id/arrow"
+                android:layout_centerVertical="true" />
+  </RelativeLayout>
+</RelativeLayout>  
+</LinearLayout>

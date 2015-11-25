@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_list"
+    android:orientation="vertical" >
+    <Button
+        android:layout_width="fill_parent"
+        android:id="@+id/localmusic_buttontop"
+        android:layout_height="50dip"
+        android:text="@string/thirdcurrent"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:background="#4169e1"/>
+    
+         <EditText
+            android:id="@+id/localmusic_sousuo"
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/localmusic_buttontop"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dip"
+            android:layout_marginBottom="12dip"
+            android:layout_marginLeft="6dip"
+            android:layout_marginRight="6dip"
+            android:background="@drawable/login_edit_normal"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="搜索"
+            android:singleLine="true"
+            android:textSize="16sp" >
+        </EditText>
+  
+ <edu.csu.xlistview.XListView 
+        android:id="@+id/show_play_list"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_below="@+id/localmusic_sousuo"
+		android:fastScrollEnabled="true"
+		 android:textColor="#00CDCD"
+		android:cacheColorHint="#00000000">
+        
+    </edu.csu.xlistview.XListView>
+   
+         <Button
+             android:id="@+id/localmusicbtnadd"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_centerHorizontal="true"
+             android:layout_centerVertical="true"
+             android:visibility="gone"
+             android:text="扫描本地音乐" />
+        
+         <TextView
+             android:id="@+id/localmusic_textkongkong"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_above="@id/localmusicbtnadd"
+             android:layout_centerHorizontal="true"
+             android:text="空空如也"
+             android:textSize="18sp"
+             android:visibility="gone"
+             android:layout_marginBottom="6dip" />
+
+</RelativeLayout>

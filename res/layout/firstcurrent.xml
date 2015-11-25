@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafa" >
+
+    <!-- <Button
+        android:id="@+id/firstcurrent_buttontop"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="#4169e1"
+        android:text="@string/firstcurrent"
+        android:textColor="#ffffff"
+        android:textSize="20sp" /> -->
+        
+	
+      
+   <!--  <Button
+        android:layout_width="28dp"
+         android:layout_height="28dp"
+         android:background="@drawable/titlebar_menu_selector"
+         android:layout_marginTop="12dip"
+         android:id="@+id/title_bar_left_menu"
+         android:layout_gravity="left|center_vertical"
+         android:layout_marginLeft="10dp"/> -->
+   
+	 
+         <include 
+             android:id="@+id/title"
+             android:layout_alignParentTop="true"
+	         layout="@layout/default_titlebar"/> 
+	      <EditText
+            android:id="@+id/sousuo"
+            android:layout_width="fill_parent"
+            android:layout_height="36dp"
+            android:layout_below="@id/title"
+            android:layout_marginTop="10dip"
+            android:layout_marginBottom="12dip"
+            android:background="@drawable/login_edit_normal"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="搜索"
+            android:singleLine="true"
+            android:textSize="16sp" >
+        </EditText>
+    <ScrollView 
+        android:id="@+id/scroll"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+          android:layout_below="@id/sousuo">
+        <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:background="#fafafa" >
+      <!--   <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="0dp" >
+            <requestFocus />
+        </EditText> -->
+  
+        <RelativeLayout
+            android:id="@+id/first_relative1"
+            android:layout_height="50dip"
+            android:layout_width="fill_parent"
+          
+            >
+        <Button 
+            android:id="@+id/localmusicbtn"
+            android:layout_height="50dip"
+            android:layout_width="fill_parent"
+            android:drawableLeft="@drawable/main_choose1"
+            android:drawableRight="@drawable/main_choose1"
+            android:background="@drawable/button_music"
+            android:text="本地音乐"
+            android:layout_marginBottom="1dip"
+            android:gravity="center|left"
+            android:textSize="18sp"
+            />   
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/first_relative2"
+            android:layout_height="50dip"
+            android:layout_width="fill_parent"
+            android:layout_below="@id/first_relative1"
+            >
+        <Button 
+            android:id="@+id/netmusicbtn"
+            android:layout_height="50dip"
+            android:layout_width="fill_parent"
+            android:drawableLeft="@drawable/main_choose1"
+            android:drawableRight="@drawable/main_choose1"
+            android:background="@drawable/button_music"
+            android:text="在线音乐"
+            android:layout_marginBottom="1dip"
+            android:gravity="center|left"
+            android:textSize="18sp"
+            />   
+        </RelativeLayout>
+
+       <RelativeLayout
+            android:id="@+id/first_relative3"
+            android:layout_height="50dip"
+            android:layout_width="fill_parent"
+            android:layout_below="@id/first_relative2"
+            >
+        <Button 
+            android:layout_height="50dip"
+            android:layout_width="fill_parent"
+            android:drawableLeft="@drawable/main_choose1"
+            android:drawableRight="@drawable/main_choose1"
+            android:background="@drawable/button_music"
+            android:text="下载歌曲"
+            android:layout_marginBottom="1dip"
+            android:gravity="center|left"
+            android:textSize="18sp"
+            />   
+        </RelativeLayout>
+		<RelativeLayout
+            android:id="@+id/first_relative4"
+            android:layout_height="50dip"
+            android:layout_width="fill_parent"
+            android:layout_below="@id/first_relative3"
+            >
+        <Button 
+            android:layout_height="50dip"
+            android:layout_width="fill_parent"
+            android:drawableLeft="@drawable/main_choose1"
+            android:drawableRight="@drawable/main_choose1"
+            android:background="@drawable/button_music"
+            android:text="最近播放"
+            android:layout_marginBottom="1dip"
+            android:gravity="center|left"
+            android:textSize="18sp"
+            />   
+        </RelativeLayout>
+        
+		<RelativeLayout
+            android:id="@+id/first_relative5"
+            android:layout_height="54dip"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="16dip"
+            android:layout_below="@id/first_relative4"
+            >
+        <Button 
+            android:layout_height="54dip"
+            android:layout_width="fill_parent"
+            android:drawableRight="@drawable/main_choose1"
+            android:background="@drawable/button_music"
+            android:text="我的歌单"
+            android:layout_marginBottom="1dip"
+            android:gravity="center|left"
+            android:textSize="18sp"
+            />   
+        </RelativeLayout>
+        
+		<LinearLayout
+            android:id="@+id/first_liner1"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_below="@id/first_relative5"
+            >
+          <RelativeLayout
+            android:id="@+id/first_relative_1"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_music"
+            android:layout_marginRight="12dip"
+            android:layout_width="0dp"
+            >
+	        <Button 
+	            android:id="@+id/first_button1"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:color/transparent"
+	            android:drawableTop="@drawable/main_choose1_1"
+	            android:text="我喜欢"
+	            android:textSize="17sp"
+	            />  
+	         <Button 
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_below="@id/first_button1"
+	            android:background="@android:color/transparent"
+	            android:text="0首"
+	            android:textSize="15sp"
+	            /> 
+        </RelativeLayout> 
+        <RelativeLayout
+            android:id="@+id/first_relative_2"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:background="@drawable/button_music"
+            android:layout_marginRight="12dip"
+            >
+	       
+	        <Button
+	            android:id="@+id/first_button2" 
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:color/transparent"
+	            android:drawableTop="@drawable/main_choose1_1"
+	            android:text="我喜欢"
+	            android:textSize="17sp"
+	            />
+	        <Button 
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_below="@id/first_button2"
+	            android:background="@android:color/transparent"
+	            android:text="0首"
+	            android:textSize="15sp"
+	            />
+        </RelativeLayout> 
+         <RelativeLayout
+            android:id="@+id/first_relative_3"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_music"
+            android:layout_width="0dp"
+            >
+	       
+	           <Button 
+	            android:id="@+id/first_button3"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:drawableTop="@drawable/main_choose1_1"
+	            android:background="@android:color/transparent"
+	            android:text="我喜欢"
+	            android:textSize="17sp"
+	            />
+	           <Button 
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_below="@id/first_button3"
+	            android:background="@android:color/transparent"
+	            android:text="0首"
+	            android:textSize="15sp"
+	            />
+        </RelativeLayout> 
+        </LinearLayout>
+    </RelativeLayout>
+    </ScrollView>
+
+    <!-- <ImageView
+        android:id="@+id/first_imageViewtop"
+        android:layout_width="wrap_content"
+        android:layout_height="50dip"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/main_choose1" /> -->
+
+</RelativeLayout>

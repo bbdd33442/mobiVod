@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.csu.mobiVod"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="14" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="edu.csu.mobiVod.MeauActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         <activity
+            android:name="edu.csu.mobiVod.MediaMainActivity" >
+        </activity>
+         <activity
+            android:name="edu.csu.mobiVod.MusicMain" >
+        </activity>
+        <activity
+            android:name="edu.csu.music.LocalMusic">
+            </activity>
+             <activity
+            android:name="edu.csu.music.MusicPlayerActivity">
+            </activity>
+             <activity
+            android:name="edu.csu.music.InternetMusic">
+            </activity>
+            <service
+                android:name="edu.csu.music.PlayerService">
+            </service>
+         <activity
+            android:name="edu.csu.mobiVod.MovieMain" >
+        </activity>
+         <activity
+            android:name="edu.csu.mobiVod.MoreMain" >
+        </activity> 
+         <activity
+            android:name="edu.csu.movies.LocalMovie" >
+        </activity>
+         <activity
+            android:name="edu.csu.movies.InternetMovie" >
+        </activity>
+        <activity
+            android:name="edu.csu.movies.DetailMovie" >
+        </activity>
+        <activity
+            android:name="edu.csu.movies.PlayLocalMovies"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="edu.csu.movies.PlayeNetVideo"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="edu.csu.remote.RemoteActivity">
+        </activity>
+        <activity android:name="edu.csu.remote.SelectPicPopupWindow" android:theme="@style/MyDialogStyleBottom" /> 
+        <activity
+            android:name="edu.csu.mobiVod.ResideMore">
+        </activity>
+    </application>
+
+</manifest>
