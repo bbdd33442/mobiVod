@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_marginLeft="5dip"
-    android:layout_marginRight="5dip"
-    android:layout_height="70dip"
-    android:descendantFocusability="blocksDescendants"
-    android:background="@drawable/button_movie" >
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip"
+                android:layout_height="70dip"
+                android:descendantFocusability="blocksDescendants"
+                android:background="@drawable/button_movie">
 
     <TextView
         android:id="@+id/localmovie_title"
@@ -20,38 +20,38 @@
         android:singleLine="true"
         android:text="做一下测试啦啦啦啦啦啦啦啦啦来来来来来来来来来来来来啦啦啦"
         android:textColor="#545454"
-        android:textSize="16sp" />
-   
-	<ImageView
-	    android:id="@+id/localmovie_imgright"
-	    android:layout_width="40dip"
-	    android:layout_height="fill_parent"
-	    android:layout_alignParentBottom="true"
-	    android:layout_alignParentRight="true"
-	    android:layout_alignTop="@+id/localmovie_imgleft"
-	    android:layout_marginBottom="3dip"
-	    android:src="@drawable/main_choose1" />
+        android:textSize="16sp"/>
 
-	 <ImageView
-	     android:id="@+id/localmovie_imgleft"
-	     android:layout_width="90dip"
-	     android:layout_height="64dip"
-	     android:layout_marginLeft="5dip"
-	     android:layout_marginTop="3dip"
-	     android:layout_marginBottom="3dip"
-	     android:scaleType="centerCrop"
-	     android:layout_alignParentLeft="true"
-	     android:layout_alignParentTop="true"
-	     android:src="@raw/get" />
+    <ImageView
+        android:id="@+id/localmovie_imgright"
+        android:layout_width="40dip"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/localmovie_imgleft"
+        android:layout_marginBottom="3dip"
+        android:src="@drawable/main_choose1"/>
 
-	 <TextView
-	     android:id="@+id/localmovie_texttime"
-	     android:layout_width="wrap_content"
-	     android:layout_height="wrap_content"
-	     android:layout_alignBottom="@+id/localmovie_imgleft"
-	     android:layout_toLeftOf="@+id/localmovie_title"
-	     android:background="#000000"
-	     android:textColor="#fafafa"
-	     android:text="30:50" />
+    <ImageView
+        android:id="@+id/localmovie_imgleft"
+        android:layout_width="90dip"
+        android:layout_height="64dip"
+        android:layout_marginLeft="5dip"
+        android:layout_marginTop="3dip"
+        android:layout_marginBottom="3dip"
+        android:scaleType="centerCrop"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@raw/get"/>
+
+    <TextView
+        android:id="@+id/localmovie_texttime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/localmovie_imgleft"
+        android:layout_toLeftOf="@+id/localmovie_title"
+        android:background="#000000"
+        android:textColor="#fafafa"
+        android:text="30:50"/>
 
 </RelativeLayout>	

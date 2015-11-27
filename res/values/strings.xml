@@ -5,10 +5,10 @@
     <string name="firstcurrent">音乐</string>
     <string name="secondcurrent">视频</string>
     <string name="mediaplayer_menu_item">多媒体播放</string>
-	<string name="remote_menu_item">遥控</string>
-	<string name="settings_menu_item">设置</string>
+    <string name="remote_menu_item">遥控</string>
+    <string name="settings_menu_item">设置</string>
     <string name="thirdcurrent">更多</string>
-	<drawable name="shezhinormal">#ffffff</drawable>
+    <drawable name="shezhinormal">#ffffff</drawable>
     <drawable name="shezhipressed">#4169e1</drawable>
     <drawable name="zixunnormal">#ebebeb</drawable>
     <drawable name="zixunpressed">#bebebe</drawable>
@@ -19,7 +19,7 @@
     <string name="btnLED1Off">关闭LED1</string>
     <string name="btnLED2On">打开LED2</string>
     <string name="btnLED2Off">关闭LED2</string>
-    
+
     <string name="btnLED3On">打开继电器</string>
     <string name="btnLED3Off">关闭继电器</string>
     <string name="btnLED4On">开遥控</string>
@@ -32,5 +32,5 @@
     <color name="green">#00ff00</color>
     <string name="bgtext">android wifi</string>
     <string name="ipnameaddr">请输入开发板IP地址</string>
-    
+
 </resources>

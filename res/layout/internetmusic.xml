@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_list"
-    android:orientation="vertical" >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_list"
+                android:orientation="vertical">
+
     <Button
         android:layout_width="fill_parent"
         android:id="@+id/internetmovie_buttontop"
@@ -12,32 +13,33 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:background="#4169e1"/>
-    
-         <EditText
-            android:id="@+id/internetmovie_sousuo"
-            android:layout_width="fill_parent"
-            android:layout_below="@id/internetmovie_buttontop"
-            android:layout_height="36dp"
-            android:layout_marginTop="10dip"
-            android:layout_marginBottom="12dip"
-            android:layout_marginLeft="6dip"
-            android:layout_marginRight="6dip"
-            android:background="@drawable/login_edit_normal"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="搜索"
-            android:singleLine="true"
-            android:textSize="16sp" >
-        </EditText>
-    <edu.csu.xlistview.XListView 
+
+    <EditText
+        android:id="@+id/internetmovie_sousuo"
+        android:layout_width="fill_parent"
+        android:layout_below="@id/internetmovie_buttontop"
+        android:layout_height="36dp"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="12dip"
+        android:layout_marginLeft="6dip"
+        android:layout_marginRight="6dip"
+        android:background="@drawable/login_edit_normal"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="搜索"
+        android:singleLine="true"
+        android:textSize="16sp">
+    </EditText>
+
+    <edu.csu.xlistview.XListView
         android:id="@+id/internetmusic_listview"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:layout_below="@+id/internetmovie_sousuo"
-		android:fastScrollEnabled="true"
-		 android:textColor="#00CDCD"
-		android:cacheColorHint="#00000000">
-        
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/internetmovie_sousuo"
+        android:fastScrollEnabled="true"
+        android:textColor="#00CDCD"
+        android:cacheColorHint="#00000000">
+
     </edu.csu.xlistview.XListView>
 
 

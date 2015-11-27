@@ -1,6 +1,7 @@
 package edu.csu.remote;
 
 import edu.csu.mobiVod.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -10,55 +11,55 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class SelectPicPopupWindow extends Activity implements OnClickListener{
+public class SelectPicPopupWindow extends Activity implements OnClickListener {
 
-	private Button btn_delete_remote, btn_edit_remote, btn_cancel;
-	private LinearLayout layout;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.alert_dialog);
-		btn_delete_remote = (Button) this.findViewById(R.id.btn_delete_remote);
-		btn_edit_remote = (Button) this.findViewById(R.id.btn_edit_remote);
-		btn_cancel = (Button) this.findViewById(R.id.btn_cancel);
-		
-		layout=(LinearLayout)findViewById(R.id.pop_layout);
-		
-		//Ìí¼ÓÑ¡Ôñ´°¿Ú·¶Î§¼àÌý¿ÉÒÔÓÅÏÈ»ñÈ¡´¥µã£¬¼´²»ÔÙÖ´ÐÐonTouchEvent()º¯Êý£¬µã»÷ÆäËûµØ·½Ê±Ö´ÐÐonTouchEvent()º¯ÊýÏú»ÙActivity
-		layout.setOnClickListener(new OnClickListener() {		
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(getApplicationContext(), "ÌáÊ¾£ºµã»÷´°¿ÚÍâ²¿¹Ø±Õ´°¿Ú£¡", 
-						Toast.LENGTH_SHORT).show();	
-			}
-		});
-		//Ìí¼Ó°´Å¥¼àÌý
-		btn_cancel.setOnClickListener(this);
-		btn_edit_remote.setOnClickListener(this);
-		btn_delete_remote.setOnClickListener(this);
-	}
-	
-	//ÊµÏÖonTouchEvent´¥ÆÁº¯Êýµ«µã»÷ÆÁÄ»Ê±Ïú»Ù±¾Activity
-	@Override
-	public boolean onTouchEvent(MotionEvent event){
-		finish();
-		return true;
-	}
+    private Button btn_delete_remote, btn_edit_remote, btn_cancel;
+    private LinearLayout layout;
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btn_delete_remote:
-			break;
-		case R.id.btn_edit_remote:				
-			break;
-		case R.id.btn_cancel:				
-			break;
-		default:
-			break;
-		}
-		finish();
-	}
-	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.alert_dialog);
+        btn_delete_remote = (Button) this.findViewById(R.id.btn_delete_remote);
+        btn_edit_remote = (Button) this.findViewById(R.id.btn_edit_remote);
+        btn_cancel = (Button) this.findViewById(R.id.btn_cancel);
+
+        layout = (LinearLayout) findViewById(R.id.pop_layout);
+
+        //ï¿½ï¿½ï¿½Ñ¡ï¿½ñ´°¿Ú·ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½È¡ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½onTouchEvent()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½Ê±Ö´ï¿½ï¿½onTouchEvent()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Activity
+        layout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½Ø±Õ´ï¿½ï¿½Ú£ï¿½",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        //ï¿½ï¿½Ó°ï¿½Å¥ï¿½ï¿½ï¿½ï¿½
+        btn_cancel.setOnClickListener(this);
+        btn_edit_remote.setOnClickListener(this);
+        btn_delete_remote.setOnClickListener(this);
+    }
+
+    //Êµï¿½ï¿½onTouchEventï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»Ê±ï¿½ï¿½ï¿½Ù±ï¿½Activity
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        finish();
+        return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_delete_remote:
+                break;
+            case R.id.btn_edit_remote:
+                break;
+            case R.id.btn_cancel:
+                break;
+            default:
+                break;
+        }
+        finish();
+    }
+
 }

@@ -23,141 +23,141 @@ import edu.csu.mobiVod.R;
 
 
 public class RemoteActivity extends Activity {
-	//Ç°Áù¸ö×é¼þÁ½¸öÒ»×é£¬Ä¿Ç°¿ÉÒÔ¿ØÖÆ¿ª·¢°åµÄLEDµÆ1¡¢LEDµÆ2ºÍ¼ÌµçÆ÷£¬ºóÁ½¸öÊÇÒ£¿ØËùÓÃµÄÐÂ×é¼þ¡£
-	private Button btnLED1On = null;
-	private Button btnLED1Off = null;
-	private Button btnLED2On = null;
-	private Button btnLED2Off = null;
-	private Button btnLED3On = null;
-	private Button btnLED3Off = null;
-	private Button btnLED4On = null;
-	private Button btnLED4Off = null;
-	private EditText etIp = null;
-	
-	//ÕâÀïÊÇÂ·ÓÉÆ÷ÁÙÊ±·ÖÅä¸øÒ£¿Ø¿ª·¢°åµÄIPµØÖ·
-	private String ipstr = "empty";
+    //Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½é£¬Ä¿Ç°ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½LEDï¿½ï¿½1ï¿½ï¿½LEDï¿½ï¿½2ï¿½Í¼Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private Button btnLED1On = null;
+    private Button btnLED1Off = null;
+    private Button btnLED2On = null;
+    private Button btnLED2Off = null;
+    private Button btnLED3On = null;
+    private Button btnLED3Off = null;
+    private Button btnLED4On = null;
+    private Button btnLED4Off = null;
+    private EditText etIp = null;
+
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ò£ï¿½Ø¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½Ö·
+    private String ipstr = "empty";
 
     private static final int UDP_SERVER_PORT = 8080;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.remote);
-      
-        etIp = (EditText)findViewById(R.id.EditText_ip);
-        btnLED1On = (Button)findViewById(R.id.ButtonLED1On);
-        btnLED1Off = (Button)findViewById(R.id.ButtonLED1Off);
-        btnLED2On = (Button)findViewById(R.id.ButtonLED2On);
-        btnLED2Off = (Button)findViewById(R.id.ButtonLED2Off);
-        btnLED3On = (Button)findViewById(R.id.ButtonLED3On);
-        btnLED3Off = (Button)findViewById(R.id.ButtonLED3Off);
-        btnLED4On = (Button)findViewById(R.id.ButtonLED4On);
-        btnLED4Off = (Button)findViewById(R.id.ButtonLED4Off);
-        
-        //¼àÌý»Ø³µ¼ü  
-        etIp.setOnEditorActionListener(new OnEditorActionListener() {    
-			@Override
-			public boolean onEditorAction(TextView v, int actionId,
-					KeyEvent event) {
-				ipstr = etIp.getText().toString();
+
+        etIp = (EditText) findViewById(R.id.EditText_ip);
+        btnLED1On = (Button) findViewById(R.id.ButtonLED1On);
+        btnLED1Off = (Button) findViewById(R.id.ButtonLED1Off);
+        btnLED2On = (Button) findViewById(R.id.ButtonLED2On);
+        btnLED2Off = (Button) findViewById(R.id.ButtonLED2Off);
+        btnLED3On = (Button) findViewById(R.id.ButtonLED3On);
+        btnLED3Off = (Button) findViewById(R.id.ButtonLED3Off);
+        btnLED4On = (Button) findViewById(R.id.ButtonLED4On);
+        btnLED4Off = (Button) findViewById(R.id.ButtonLED4Off);
+
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ø³ï¿½ï¿½ï¿½  
+        etIp.setOnEditorActionListener(new OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId,
+                                          KeyEvent event) {
+                ipstr = etIp.getText().toString();
                 return false;
-			}  
-        });  
-        
-        btnLED1On.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String udpMsg = "LED_OPEN1";
-				sendMessage(udpMsg);
-			}
+            }
         });
-        
+
+        btnLED1On.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String udpMsg = "LED_OPEN1";
+                sendMessage(udpMsg);
+            }
+        });
+
         btnLED1Off.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String udpMsg = "LED_CLOSE1";
-				sendMessage(udpMsg);
-			}
+            @Override
+            public void onClick(View v) {
+                String udpMsg = "LED_CLOSE1";
+                sendMessage(udpMsg);
+            }
         });
 
         btnLED2On.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String udpMsg = "LED_OPEN2";
-				sendMessage(udpMsg);
-			}
+            @Override
+            public void onClick(View v) {
+                String udpMsg = "LED_OPEN2";
+                sendMessage(udpMsg);
+            }
         });
-        
+
         btnLED2Off.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String udpMsg = "LED_CLOSE2";
-				sendMessage(udpMsg);
-			}
+            @Override
+            public void onClick(View v) {
+                String udpMsg = "LED_CLOSE2";
+                sendMessage(udpMsg);
+            }
         });
 
         btnLED3On.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String udpMsg = "JDQ_OPEN";
-				sendMessage(udpMsg);
-			}
+            @Override
+            public void onClick(View v) {
+                String udpMsg = "JDQ_OPEN";
+                sendMessage(udpMsg);
+            }
         });
-        
+
         btnLED3Off.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String udpMsg = "JDQ_CLOSE";
-				sendMessage(udpMsg);
-			}
+            @Override
+            public void onClick(View v) {
+                String udpMsg = "JDQ_CLOSE";
+                sendMessage(udpMsg);
+            }
         });
 
         btnLED4On.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String udpMsg = "ON";
-				sendMessage(udpMsg);
-			}
+            @Override
+            public void onClick(View v) {
+                String udpMsg = "ON";
+                sendMessage(udpMsg);
+            }
         });
-        
+
         btnLED4Off.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String udpMsg = "OFF";
-				sendMessage(udpMsg);
-			}
+            @Override
+            public void onClick(View v) {
+                String udpMsg = "OFF";
+                sendMessage(udpMsg);
+            }
         });
     }
-    
-    public void sendMessage(String udpMsg){
-    	DatagramSocket ds = null;
-    	ipstr = etIp.getText().toString();
-    	try {
-    		ds = new DatagramSocket();
-    		if(ipstr.equals("empty")||ipstr.equals("")){
-    			Toast.makeText(RemoteActivity.this, "ÇëÊäÈëÒ£¿ØÆ÷ip", Toast.LENGTH_SHORT).show(); 
-    		}else{
-				InetAddress serverAddr = InetAddress.getByName(ipstr);
-				ds.send(getDP(udpMsg,serverAddr));
-    		}
-		} catch (SocketException e) {
-			e.printStackTrace();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (ds!= null) {
-				ds.close();
-			}
-		}
+
+    public void sendMessage(String udpMsg) {
+        DatagramSocket ds = null;
+        ipstr = etIp.getText().toString();
+        try {
+            ds = new DatagramSocket();
+            if (ipstr.equals("empty") || ipstr.equals("")) {
+                Toast.makeText(RemoteActivity.this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ip", Toast.LENGTH_SHORT).show();
+            } else {
+                InetAddress serverAddr = InetAddress.getByName(ipstr);
+                ds.send(getDP(udpMsg, serverAddr));
+            }
+        } catch (SocketException e) {
+            e.printStackTrace();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ds != null) {
+                ds.close();
+            }
+        }
     }
-    
-    public DatagramPacket getDP(String udpMsg,InetAddress serverAddr){
-    	DatagramPacket dp;
-		dp = new DatagramPacket(udpMsg.getBytes(), udpMsg.length(), serverAddr, UDP_SERVER_PORT);
-		return dp;
+
+    public DatagramPacket getDP(String udpMsg, InetAddress serverAddr) {
+        DatagramPacket dp;
+        dp = new DatagramPacket(udpMsg.getBytes(), udpMsg.length(), serverAddr, UDP_SERVER_PORT);
+        return dp;
     }
 }

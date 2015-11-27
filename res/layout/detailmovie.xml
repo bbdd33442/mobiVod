@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fafafa" >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fafafa">
 
     <Button
-         android:id="@+id/movie_name"
+        android:id="@+id/movie_name"
         android:layout_width="fill_parent"
         android:layout_height="50dip"
         android:background="#4169e1"
         android:text="电影"
         android:textColor="#ffffff"
-        android:textSize="20sp" />
+        android:textSize="20sp"/>
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/movie_name" >
+        android:layout_below="@+id/movie_name">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="163dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1.39" >
+                    android:layout_weight="1.39">
 
                     <ImageView
                         android:id="@+id/detail_bofang"
@@ -39,7 +39,7 @@
                         android:layout_height="150dp"
                         android:layout_margin="5dip"
                         android:background="@raw/gett"
-                        android:scaleType="centerCrop" />
+                        android:scaleType="centerCrop"/>
                 </RelativeLayout>
 
                 <LinearLayout
@@ -47,13 +47,13 @@
                     android:layout_height="fill_parent"
                     android:layout_margin="5dip"
                     android:layout_weight="2"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
-                 
+
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="fill_parent"
@@ -61,7 +61,7 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text="导演："
-                            android:textSize="15sp" />
+                            android:textSize="15sp"/>
 
                         <TextView
                             android:id="@+id/movie_director"
@@ -70,13 +70,13 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text=""
-                            android:textSize="15sp" />
+                            android:textSize="15sp"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="fill_parent"
@@ -84,7 +84,7 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text="主演："
-                            android:textSize="15sp" />
+                            android:textSize="15sp"/>
 
                         <TextView
                             android:id="@+id/movie_actors"
@@ -94,13 +94,13 @@
                             android:gravity="left"
                             android:singleLine="false"
                             android:text=""
-                            android:textSize="15sp" />
+                            android:textSize="15sp"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="fill_parent"
@@ -108,7 +108,7 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text="上映时间："
-                            android:textSize="15sp" />
+                            android:textSize="15sp"/>
 
                         <TextView
                             android:id="@+id/movie_date"
@@ -117,13 +117,13 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text=""
-                            android:textSize="15sp" />
+                            android:textSize="15sp"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="fill_parent"
@@ -131,7 +131,7 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text="片长："
-                            android:textSize="15sp" />
+                            android:textSize="15sp"/>
 
                         <TextView
                             android:id="@+id/movie_time"
@@ -140,13 +140,13 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text=""
-                            android:textSize="15sp" />
+                            android:textSize="15sp"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="fill_parent"
@@ -154,7 +154,7 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text="评分："
-                            android:textSize="15sp" />
+                            android:textSize="15sp"/>
 
                         <TextView
                             android:id="@+id/movie_score"
@@ -163,7 +163,7 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:text=""
-                            android:textSize="15sp" />
+                            android:textSize="15sp"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -173,14 +173,14 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="简介:"
-                android:textSize="20dp" />
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/movie_introduction"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="《星际穿越》（Interstellar）是克里斯托弗·诺兰执导的一部原创科幻冒险电影，由马修·麦康纳、安妮·海瑟薇、杰西卡·查斯坦及迈克尔·凯恩主演，基于知名理论物理学家基普·索恩的黑洞理论经过合理演化之后，加入人物和相关情节改编而成。[1] 影片由派拉蒙、华纳和传奇影业联合制作，派拉蒙负责北美发行，华纳负责海外发行，定于2014年11月7日在北美公映。[2] 《星际穿越》主要讲述了一队探险家利用他们针对虫洞的新发现，超越人类对于太空旅行的极限，从而开始在广袤的宇宙中进行星际航行的故事。" />
+                android:text="《星际穿越》（Interstellar）是克里斯托弗·诺兰执导的一部原创科幻冒险电影，由马修·麦康纳、安妮·海瑟薇、杰西卡·查斯坦及迈克尔·凯恩主演，基于知名理论物理学家基普·索恩的黑洞理论经过合理演化之后，加入人物和相关情节改编而成。[1] 影片由派拉蒙、华纳和传奇影业联合制作，派拉蒙负责北美发行，华纳负责海外发行，定于2014年11月7日在北美公映。[2] 《星际穿越》主要讲述了一队探险家利用他们针对虫洞的新发现，超越人类对于太空旅行的极限，从而开始在广袤的宇宙中进行星际航行的故事。"/>
         </LinearLayout>
     </ScrollView>
 
@@ -190,6 +190,6 @@
         android:layout_height="50dip"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/main_choose1" />
+        android:src="@drawable/main_choose1"/>
 
 </RelativeLayout>

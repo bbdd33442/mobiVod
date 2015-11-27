@@ -4,62 +4,67 @@ import android.app.Activity;
 import android.os.Environment;
 
 public class Util {
-	private static Util util;
-	public static int flag = 0;
-	private Util(){
-		
-	}
-	
-	public static Util getInstance(){
-		if(util == null){
-			util = new Util();
-		}
-		return util;
-	}
-	
-	/**
-	 * ÅÐ¶ÏÊÇ·ñÓÐsdcard
-	 * @return
-	 */
-	public boolean hasSDCard(){
-		boolean b = false;
-		if(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
-			b = true;
-		}
-		return b;
-	}
-	
-	/**
-	 * µÃµ½sdcardÂ·¾¶
-	 * @return
-	 */
-	public String getExtPath(){
-		String path = "";
-		if(hasSDCard()){
-			path = Environment.getExternalStorageDirectory().getPath();
-		}
-		return path;
-	}
-	
-	/**
-	 * µÃµ½/data/data/yanbin.imagedownloadÄ¿Â¼
-	 * @param mActivity
-	 * @return
-	 */
-	public String getPackagePath(Activity mActivity){
-		return mActivity.getFilesDir().toString();
-	}
+    private static Util util;
+    public static int flag = 0;
 
-	/**
-	 * ¸ù¾ÝurlµÃµ½Í¼Æ¬Ãû
-	 * @param url
-	 * @return
-	 */
-	public String getImageName(String url) {
-		String imageName = "";
-		if(url != null){
-			imageName = url.substring(url.lastIndexOf("/") + 1);
-		}
-		return imageName;
-	}
+    private Util() {
+
+    }
+
+    public static Util getInstance() {
+        if (util == null) {
+            util = new Util();
+        }
+        return util;
+    }
+
+    /**
+     * ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½sdcard
+     *
+     * @return
+     */
+    public boolean hasSDCard() {
+        boolean b = false;
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            b = true;
+        }
+        return b;
+    }
+
+    /**
+     * ï¿½Ãµï¿½sdcardÂ·ï¿½ï¿½
+     *
+     * @return
+     */
+    public String getExtPath() {
+        String path = "";
+        if (hasSDCard()) {
+            path = Environment.getExternalStorageDirectory().getPath();
+        }
+        return path;
+    }
+
+    /**
+     * ï¿½Ãµï¿½/data/data/yanbin.imagedownloadÄ¿Â¼
+     *
+     * @param mActivity
+     * @return
+     */
+    public String getPackagePath(Activity mActivity) {
+        return mActivity.getFilesDir().toString();
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½ï¿½urlï¿½Ãµï¿½Í¼Æ¬ï¿½ï¿½
+     *
+     * @param url
+     * @return
+     */
+    public String getImageName(String url) {
+        String imageName = "";
+        if (url != null) {
+            imageName = url.substring(url.lastIndexOf("/") + 1);
+        }
+        return imageName;
+    }
 }

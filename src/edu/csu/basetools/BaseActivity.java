@@ -8,9 +8,9 @@ import android.view.View;
 
 public class BaseActivity extends Activity {
 
-	/** ÊÖÊÆ¼àÌý */
+	/** ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ */
 	GestureDetector mGestureDetector;
-	/** ÊÇ·ñÐèÒª¼àÌýÊÖÊÆ¹Ø±Õ¹¦ÄÜ */
+	/** ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¹Ø±Õ¹ï¿½ï¿½ï¿½ */
 	private boolean mNeedBackGesture = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,35 +19,35 @@ public class BaseActivity extends Activity {
 		initGestureDetector();
 	}
 
-	private void initGestureDetector() {
-		if (mGestureDetector == null) {
-			mGestureDetector = new GestureDetector(getApplicationContext(),
-					new BackGestureListener(this));
-		}
-	}
+    private void initGestureDetector() {
+        if (mGestureDetector == null) {
+            mGestureDetector = new GestureDetector(getApplicationContext(),
+                    new BackGestureListener(this));
+        }
+    }
 
-	@Override
-	public boolean dispatchTouchEvent(MotionEvent ev) {
-		// TODO Auto-generated method stub
-		if(mNeedBackGesture){
-			return mGestureDetector.onTouchEvent(ev) || super.dispatchTouchEvent(ev);
-		}
-		return super.dispatchTouchEvent(ev);
-	}
-	
-	/*
-	 * ÉèÖÃÊÇ·ñ½øÐÐÊÖÊÆ¼àÌý
-	 */
-	public void setNeedBackGesture(boolean mNeedBackGesture){
-		this.mNeedBackGesture = mNeedBackGesture;
-	}
-	
-	/*
-	 * ·µ»Ø
-	 */
-	public void doBack(View view) {
-		//onBackPressed();
-		
-	}
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        // TODO Auto-generated method stub
+        if (mNeedBackGesture) {
+            return mGestureDetector.onTouchEvent(ev) || super.dispatchTouchEvent(ev);
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    /*
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½
+     */
+    public void setNeedBackGesture(boolean mNeedBackGesture) {
+        this.mNeedBackGesture = mNeedBackGesture;
+    }
+
+    /*
+     * ï¿½ï¿½ï¿½ï¿½
+     */
+    public void doBack(View view) {
+        //onBackPressed();
+
+    }
 
 }

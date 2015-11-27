@@ -20,269 +20,272 @@ import android.util.Log;
 import android.widget.ImageView;
 
 /**
- * Í¼Æ¬Òì²½ÏÂÔØÀà£¬°üÀ¨Í¼Æ¬µÄÈíÓ¦ÓÃ»º´æÒÔ¼°½«Í¼Æ¬´æ·Åµ½SDCard»òÕßÎÄ¼þÖÐ
- *
+ * Í¼Æ¬ï¿½ì²½ï¿½ï¿½ï¿½ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Åµï¿½SDCardï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
  */
 public class ImageDownloader {
-	private static final String TAG = "ImageDownloader";
-	private HashMap<String, MyAsyncTask> map = new HashMap<String, MyAsyncTask>();
-	private Map<String, SoftReference<Bitmap>> imageCaches = new HashMap<String, SoftReference<Bitmap>>();
-	/**
-	 * 
-	 * @param url ¸ÃmImageView¶ÔÓ¦µÄurl
-	 * @param mImageView
-	 * @param path ÎÄ¼þ´æ´¢Â·¾¶
-	 * @param mActivity
-	 * @param download OnImageDownload»Øµ÷½Ó¿Ú£¬ÔÚonPostExecute()ÖÐ±»µ÷ÓÃ
-	 */
-public void imageDownload(String url,ImageView mImageView,String path,Activity mActivity,OnImageDownload download){
-		
-		SoftReference<Bitmap> currBitmap = imageCaches.get(url);
-		Bitmap softRefBitmap = null;
-		if(currBitmap != null){
-			softRefBitmap = currBitmap.get();
-		}
-		String imageName = "";
-		if(url != null){
-			imageName = Util.getInstance().getImageName(url);
-		}
-		//ÏÈ´ÓÈíÒýÓÃÖÐÄÃÊý¾Ý
-		if(currBitmap != null && mImageView != null && softRefBitmap != null && url.equals(mImageView.getTag())){
-			System.out.println("´ÓÈíÒýÓÃÖÐÄÃÊý¾Ý--imageName==" + imageName);
-			mImageView.setImageBitmap(softRefBitmap);
-		}
-		else if(mImageView != null && url.equals(mImageView.getTag())){
-			//ÈíÒýÓÃÖÐÃ»ÓÐ£¬´ÓÎÄ¼þÖÐÄÃÊý¾Ý
-			Bitmap bitmap = getBitmapFromFile(mActivity,imageName,path);
-			if(bitmap != null){
-				mImageView.setImageBitmap(bitmap);
-				//½«¶ÁÈ¡µÄÊý¾Ý·ÅÈëµ½ÈíÒýÓÃÖÐ
-				//imageCaches.put(url, new SoftReference<Bitmap>(bitmap));
-				imageCaches.put(url, new SoftReference<Bitmap>(Bitmap.createScaledBitmap(bitmap, 180, 180,true)));
-			}
-			//ÎÄ¼þÖÐÒ²Ã»ÓÐ£¬´ËÊ±¸ù¾ÝmImageViewµÄtag£¬¼´urlÈ¥ÅÐ¶Ï¸Ãurl¶ÔÓ¦µÄtaskÊÇ·ñÒÑ¾­ÔÚÖ´ÐÐ£¬Èç¹ûÔÚÖ´ÐÐ£¬±¾´Î²Ù×÷²»´´½¨ÐÂµÄÏß³Ì£¬·ñÔò´´½¨ÐÂµÄÏß³Ì¡£
-			else if(url != null && needCreateNewTask(mImageView)){
-				MyAsyncTask task = new MyAsyncTask(url, mImageView, path,mActivity,download);
-				if(mImageView != null){
-					Log.i(TAG, "Ö´ÐÐMyAsyncTask --> " + Util.flag);
-					Util.flag ++;
-					task.execute();
-					//½«¶ÔÓ¦µÄurl¶ÔÓ¦µÄÈÎÎñ´æÆðÀ´
-					map.put(url, task);
-				}
-			}
-		}
-	}
-	
-	/**
-	 * ÅÐ¶ÏÊÇ·ñÐèÒªÖØÐÂ´´½¨Ïß³ÌÏÂÔØÍ¼Æ¬£¬Èç¹ûÐèÒª£¬·µ»ØÖµÎªtrue¡£
-	 * @param url
-	 * @param mImageView
-	 * @return
-	 */
-	private boolean needCreateNewTask(ImageView mImageView){
-		boolean b = true;
-		if(mImageView != null){
-			String curr_task_url = (String)mImageView.getTag();
-			if(isTasksContains(curr_task_url)){
-				b = false;
-			}
-		}
-		return b;
-	}
-	
-	/**
-	 * ¼ì²é¸Ãurl£¨×îÖÕ·´Ó³µÄÊÇµ±Ç°µÄImageViewµÄtag£¬tag»á¸ù¾ÝpositionµÄ²»Í¬¶ø²»Í¬£©¶ÔÓ¦µÄtaskÊÇ·ñ´æÔÚ
-	 * @param url
-	 * @return
-	 */
-	private boolean isTasksContains(String url){
-		boolean b = false;
-		if(map != null && map.get(url) != null){
-			b = true;
-		}
-		return b;
-	}
-	
-	/**
-	 * É¾³ýmapÖÐ¸ÃurlµÄÐÅÏ¢£¬ÕâÒ»²½ºÜÖØÒª£¬²»È»MyAsyncTaskµÄÒýÓÃ»á¡°Ò»Ö±¡±´æÔÚÓÚmapÖÐ
-	 * @param url
-	 */
-	private void removeTaskFormMap(String url){
-		if(url != null && map != null && map.get(url) != null){
-			map.remove(url);
-			System.out.println("µ±Ç°mapµÄ´óÐ¡=="+map.size());
-		}
-	}
-	
-	/**
-	 * ´ÓÎÄ¼þÖÐÄÃÍ¼Æ¬
-	 * @param mActivity 
-	 * @param imageName Í¼Æ¬Ãû×Ö
-	 * @param path Í¼Æ¬Â·¾¶
-	 * @return
-	 */
-	private Bitmap getBitmapFromFile(Activity mActivity,String imageName,String path){
-		Bitmap bitmap = null;
-		if(imageName != null){
-			File file = null;
-			String real_path = "";
-			try {
-				if(Util.getInstance().hasSDCard()){
-					real_path = Util.getInstance().getExtPath() + (path != null && path.startsWith("/") ? path : "/" + path);
-				}else{
-					real_path = Util.getInstance().getPackagePath(mActivity) + (path != null && path.startsWith("/") ? path : "/" + path);
-				}
-				file = new File(real_path, imageName);
-				if(file.exists())
-				bitmap = BitmapFactory.decodeStream(new FileInputStream(file));
-			} catch (Exception e) {
-				e.printStackTrace();
-				bitmap = null;
-			}
-		}
-		return bitmap;
-	}
-	/**
-	 * ¶ÔÍ¼Æ¬½øÐÐËõ·Å
-	 */
-	public Bitmap smallscaleBitmap(Bitmap bitmap, float w,float h){
-		int width = bitmap.getWidth(); //»ñÈ¡¿í¶È
-		int height = bitmap.getHeight();//»ñÈ¡¸ß¶È
-		Matrix matrix = new Matrix(); //ÊµÀý»¯Ò»¸öMartrix¶ÔÏó
-		float scaleW = w /width;
-		float scaleH = h / height;
-		matrix.postScale(scaleW, scaleH);
-		bitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
-		return bitmap;
-	}
-	/**
-	 * ½«ÏÂÔØºÃµÄÍ¼Æ¬´æ·Åµ½ÎÄ¼þÖÐ
-	 * @param path Í¼Æ¬Â·¾¶
-	 * @param mActivity
-	 * @param imageName Í¼Æ¬Ãû×Ö
-	 * @param bitmap Í¼Æ¬
-	 * @return
-	 */
-	private boolean setBitmapToFile(String path,Activity mActivity,String imageName,Bitmap bitmap){
-		File file = null;
-		String real_path = "";
-		bitmap=smallscaleBitmap(bitmap,100f,100f);
-		try {
-			if(Util.getInstance().hasSDCard()){
-				real_path = Util.getInstance().getExtPath() + (path != null && path.startsWith("/") ? path : "/" + path);
-			}else{
-				real_path = Util.getInstance().getPackagePath(mActivity) + (path != null && path.startsWith("/") ? path : "/" + path);
-			}
-			file = new File(real_path, imageName);
-			if(!file.exists()){
-				File file2 = new File(real_path + "/");
-				file2.mkdirs();
-			}
-			file.createNewFile();
-			FileOutputStream fos = null;
-			if(Util.getInstance().hasSDCard()){
-				fos = new FileOutputStream(file);
-			}else{
-				fos = mActivity.openFileOutput(imageName, Context.MODE_PRIVATE);
-			}
-			
-			if (imageName != null && (imageName.contains(".png") || imageName.contains(".PNG"))){
-				bitmap.compress(Bitmap.CompressFormat.PNG, 80, fos);
-			}
-			else{
-				bitmap.compress(Bitmap.CompressFormat.JPEG, 80, fos);
-			}
-			fos.flush();
-			if(fos != null){
-				fos.close();
-			}
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	
-	/**
-	 * ¸¨Öú·½·¨£¬Ò»°ã²»µ÷ÓÃ
-	 * @param path
-	 * @param mActivity
-	 * @param imageName
-	 */
-	private void removeBitmapFromFile(String path,Activity mActivity,String imageName){
-		File file = null;
-		String real_path = "";
-		try {
-			if(Util.getInstance().hasSDCard()){
-				real_path = Util.getInstance().getExtPath() + (path != null && path.startsWith("/") ? path : "/" + path);
-			}else{
-				real_path = Util.getInstance().getPackagePath(mActivity) + (path != null && path.startsWith("/") ? path : "/" + path);
-			}
-			file = new File(real_path, imageName);
-			if(file != null)
-			file.delete();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Òì²½ÏÂÔØÍ¼Æ¬µÄ·½·¨
-	 *
-	 */
-	private class MyAsyncTask extends AsyncTask<String, Void, Bitmap>{
-		private ImageView mImageView;
-		private String url;
-		private OnImageDownload download;
-		private String path;
-		private Activity mActivity;
-		
-		public MyAsyncTask(String url,ImageView mImageView,String path,Activity mActivity,OnImageDownload download){
-			this.mImageView = mImageView;
-			this.url = url;
-			this.path = path;
-			this.mActivity = mActivity;
-			this.download = download;
-		}
+    private static final String TAG = "ImageDownloader";
+    private HashMap<String, MyAsyncTask> map = new HashMap<String, MyAsyncTask>();
+    private Map<String, SoftReference<Bitmap>> imageCaches = new HashMap<String, SoftReference<Bitmap>>();
 
-		@Override
-		protected Bitmap doInBackground(String... params) {
-			Bitmap data = null;
-			try {
-				URL c_url = new URL(url);
-				if(c_url.openStream()!=null){
-						InputStream bitmap_data = c_url.openStream();
-						data = BitmapFactory.decodeStream(bitmap_data);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			String imageName = Util.getInstance().getImageName(url);
-			if(data!=null){
-				if(!setBitmapToFile(path,mActivity,imageName, data)){
-					removeBitmapFromFile(path,mActivity,imageName);
-				}
-				imageCaches.put(url, new SoftReference<Bitmap>(Bitmap.createScaledBitmap(data, 180, 180, true)));
-			}
-			return data;
-		}
+    /**
+     * @param url        ï¿½ï¿½mImageViewï¿½ï¿½Ó¦ï¿½ï¿½url
+     * @param mImageView
+     * @param path       ï¿½Ä¼ï¿½ï¿½æ´¢Â·ï¿½ï¿½
+     * @param mActivity
+     * @param download   OnImageDownloadï¿½Øµï¿½ï¿½Ó¿Ú£ï¿½ï¿½ï¿½onPostExecute()ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½
+     */
+    public void imageDownload(String url, ImageView mImageView, String path, Activity mActivity, OnImageDownload download) {
 
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-		}
+        SoftReference<Bitmap> currBitmap = imageCaches.get(url);
+        Bitmap softRefBitmap = null;
+        if (currBitmap != null) {
+            softRefBitmap = currBitmap.get();
+        }
+        String imageName = "";
+        if (url != null) {
+            imageName = Util.getInstance().getImageName(url);
+        }
+        //ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (currBitmap != null && mImageView != null && softRefBitmap != null && url.equals(mImageView.getTag())) {
+            System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--imageName==" + imageName);
+            mImageView.setImageBitmap(softRefBitmap);
+        } else if (mImageView != null && url.equals(mImageView.getTag())) {
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð£ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            Bitmap bitmap = getBitmapFromFile(mActivity, imageName, path);
+            if (bitmap != null) {
+                mImageView.setImageBitmap(bitmap);
+                //ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                //imageCaches.put(url, new SoftReference<Bitmap>(bitmap));
+                imageCaches.put(url, new SoftReference<Bitmap>(Bitmap.createScaledBitmap(bitmap, 180, 180, true)));
+            }
+            //ï¿½Ä¼ï¿½ï¿½ï¿½Ò²Ã»ï¿½Ð£ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½mImageViewï¿½ï¿½tagï¿½ï¿½ï¿½ï¿½urlÈ¥ï¿½Ð¶Ï¸ï¿½urlï¿½ï¿½Ó¦ï¿½ï¿½taskï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½ï¿½ï¿½ï¿½Î²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ß³Ì£ï¿½ï¿½ï¿½ï¿½ò´´½ï¿½ï¿½Âµï¿½ï¿½ß³Ì¡ï¿½
+            else if (url != null && needCreateNewTask(mImageView)) {
+                MyAsyncTask task = new MyAsyncTask(url, mImageView, path, mActivity, download);
+                if (mImageView != null) {
+                    Log.i(TAG, "Ö´ï¿½ï¿½MyAsyncTask --> " + Util.flag);
+                    Util.flag++;
+                    task.execute();
+                    //ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½urlï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    map.put(url, task);
+                }
+            }
+        }
+    }
 
-		@Override
-		protected void onPostExecute(Bitmap result) {
-			//»Øµ÷ÉèÖÃÍ¼Æ¬
-			if(download != null){
-				download.onDownloadSucc(result,url,mImageView);
-				//¸Ãurl¶ÔÓ¦µÄtaskÒÑ¾­ÏÂÔØÍê³É£¬´ÓmapÖÐ½«ÆäÉ¾³ý
-				removeTaskFormMap(url);
-			}
-			super.onPostExecute(result);
-		}
-		
-	}
+    /**
+     * ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎªtrueï¿½ï¿½
+     *
+     * @param mImageView
+     * @return
+     */
+    private boolean needCreateNewTask(ImageView mImageView) {
+        boolean b = true;
+        if (mImageView != null) {
+            String curr_task_url = (String) mImageView.getTag();
+            if (isTasksContains(curr_task_url)) {
+                b = false;
+            }
+        }
+        return b;
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½ï¿½urlï¿½ï¿½ï¿½ï¿½ï¿½Õ·ï¿½Ó³ï¿½ï¿½ï¿½Çµï¿½Ç°ï¿½ï¿½ImageViewï¿½ï¿½tagï¿½ï¿½tagï¿½ï¿½ï¿½ï¿½ï¿½positionï¿½Ä²ï¿½Í¬ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½taskï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+     *
+     * @param url
+     * @return
+     */
+    private boolean isTasksContains(String url) {
+        boolean b = false;
+        if (map != null && map.get(url) != null) {
+            b = true;
+        }
+        return b;
+    }
+
+    /**
+     * É¾ï¿½ï¿½mapï¿½Ð¸ï¿½urlï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½È»MyAsyncTaskï¿½ï¿½ï¿½ï¿½ï¿½Ã»á¡°Ò»Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mapï¿½ï¿½
+     *
+     * @param url
+     */
+    private void removeTaskFormMap(String url) {
+        if (url != null && map != null && map.get(url) != null) {
+            map.remove(url);
+            System.out.println("ï¿½ï¿½Ç°mapï¿½Ä´ï¿½Ð¡==" + map.size());
+        }
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
+     *
+     * @param mActivity
+     * @param imageName Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+     * @param path      Í¼Æ¬Â·ï¿½ï¿½
+     * @return
+     */
+    private Bitmap getBitmapFromFile(Activity mActivity, String imageName, String path) {
+        Bitmap bitmap = null;
+        if (imageName != null) {
+            File file = null;
+            String real_path = "";
+            try {
+                if (Util.getInstance().hasSDCard()) {
+                    real_path = Util.getInstance().getExtPath() + (path != null && path.startsWith("/") ? path : "/" + path);
+                } else {
+                    real_path = Util.getInstance().getPackagePath(mActivity) + (path != null && path.startsWith("/") ? path : "/" + path);
+                }
+                file = new File(real_path, imageName);
+                if (file.exists())
+                    bitmap = BitmapFactory.decodeStream(new FileInputStream(file));
+            } catch (Exception e) {
+                e.printStackTrace();
+                bitmap = null;
+            }
+        }
+        return bitmap;
+    }
+
+    /**
+     * ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     */
+    public Bitmap smallscaleBitmap(Bitmap bitmap, float w, float h) {
+        int width = bitmap.getWidth(); //ï¿½ï¿½È¡ï¿½ï¿½ï¿½
+        int height = bitmap.getHeight();//ï¿½ï¿½È¡ï¿½ß¶ï¿½
+        Matrix matrix = new Matrix(); //Êµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Martrixï¿½ï¿½ï¿½ï¿½
+        float scaleW = w / width;
+        float scaleH = h / height;
+        matrix.postScale(scaleW, scaleH);
+        bitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+        return bitmap;
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ØºÃµï¿½Í¼Æ¬ï¿½ï¿½Åµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+     *
+     * @param path      Í¼Æ¬Â·ï¿½ï¿½
+     * @param mActivity
+     * @param imageName Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+     * @param bitmap    Í¼Æ¬
+     * @return
+     */
+    private boolean setBitmapToFile(String path, Activity mActivity, String imageName, Bitmap bitmap) {
+        File file = null;
+        String real_path = "";
+        bitmap = smallscaleBitmap(bitmap, 100f, 100f);
+        try {
+            if (Util.getInstance().hasSDCard()) {
+                real_path = Util.getInstance().getExtPath() + (path != null && path.startsWith("/") ? path : "/" + path);
+            } else {
+                real_path = Util.getInstance().getPackagePath(mActivity) + (path != null && path.startsWith("/") ? path : "/" + path);
+            }
+            file = new File(real_path, imageName);
+            if (!file.exists()) {
+                File file2 = new File(real_path + "/");
+                file2.mkdirs();
+            }
+            file.createNewFile();
+            FileOutputStream fos = null;
+            if (Util.getInstance().hasSDCard()) {
+                fos = new FileOutputStream(file);
+            } else {
+                fos = mActivity.openFileOutput(imageName, Context.MODE_PRIVATE);
+            }
+
+            if (imageName != null && (imageName.contains(".png") || imageName.contains(".PNG"))) {
+                bitmap.compress(Bitmap.CompressFormat.PNG, 80, fos);
+            } else {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 80, fos);
+            }
+            fos.flush();
+            if (fos != null) {
+                fos.close();
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ã²»ï¿½ï¿½ï¿½ï¿½
+     *
+     * @param path
+     * @param mActivity
+     * @param imageName
+     */
+    private void removeBitmapFromFile(String path, Activity mActivity, String imageName) {
+        File file = null;
+        String real_path = "";
+        try {
+            if (Util.getInstance().hasSDCard()) {
+                real_path = Util.getInstance().getExtPath() + (path != null && path.startsWith("/") ? path : "/" + path);
+            } else {
+                real_path = Util.getInstance().getPackagePath(mActivity) + (path != null && path.startsWith("/") ? path : "/" + path);
+            }
+            file = new File(real_path, imageName);
+            if (file != null)
+                file.delete();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * ï¿½ì²½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä·ï¿½ï¿½ï¿½
+     */
+    private class MyAsyncTask extends AsyncTask<String, Void, Bitmap> {
+        private ImageView mImageView;
+        private String url;
+        private OnImageDownload download;
+        private String path;
+        private Activity mActivity;
+
+        public MyAsyncTask(String url, ImageView mImageView, String path, Activity mActivity, OnImageDownload download) {
+            this.mImageView = mImageView;
+            this.url = url;
+            this.path = path;
+            this.mActivity = mActivity;
+            this.download = download;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            Bitmap data = null;
+            try {
+                URL c_url = new URL(url);
+                if (c_url.openStream() != null) {
+                    InputStream bitmap_data = c_url.openStream();
+                    data = BitmapFactory.decodeStream(bitmap_data);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String imageName = Util.getInstance().getImageName(url);
+            if (data != null) {
+                if (!setBitmapToFile(path, mActivity, imageName, data)) {
+                    removeBitmapFromFile(path, mActivity, imageName);
+                }
+                imageCaches.put(url, new SoftReference<Bitmap>(Bitmap.createScaledBitmap(data, 180, 180, true)));
+            }
+            return data;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            //ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
+            if (download != null) {
+                download.onDownloadSucc(result, url, mImageView);
+                //ï¿½ï¿½urlï¿½ï¿½Ó¦ï¿½ï¿½taskï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½mapï¿½Ð½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
+                removeTaskFormMap(url);
+            }
+            super.onPostExecute(result);
+        }
+
+    }
 }

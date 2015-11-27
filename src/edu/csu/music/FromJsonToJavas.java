@@ -6,37 +6,37 @@ import java.util.Date;
 import org.json.JSONObject;
 
 public class FromJsonToJavas {
-	
+
     @SuppressWarnings("rawtypes")
-	public static Object fromJsonToJava(JSONObject json,Class pojo) throws Exception{
-        // Ê×ÏÈµÃµ½pojoËù¶¨ÒåµÄ×Ö¶Î
-        Field [] fields = pojo.getDeclaredFields();
-        // ¸ù¾Ý´«ÈëµÄClass¶¯Ì¬Éú³Épojo¶ÔÏó
+    public static Object fromJsonToJava(JSONObject json, Class pojo) throws Exception {
+        // ï¿½ï¿½ï¿½ÈµÃµï¿½pojoï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½
+        Field[] fields = pojo.getDeclaredFields();
+        // ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½ï¿½Classï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½pojoï¿½ï¿½ï¿½ï¿½
         Object obj = pojo.newInstance();
-        for(Field field: fields){
-            // ÉèÖÃ×Ö¶Î¿É·ÃÎÊ£¨±ØÐë£¬·ñÔò±¨´í£©
+        for (Field field : fields) {
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶Î¿É·ï¿½ï¿½Ê£ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ò±¨´ï¿½
             field.setAccessible(true);
-            // µÃµ½×Ö¶ÎµÄÊôÐÔÃû
+            // ï¿½Ãµï¿½ï¿½Ö¶Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             String name = field.getName();
-            // ÕâÒ»¶ÎµÄ×÷ÓÃÊÇÈç¹û×Ö¶ÎÔÚJSONObjectÖÐ²»´æÔÚ»áÅ×³öÒì³££¬Èç¹û³öÒì³££¬ÔòÌø¹ý¡£
-            try{
-                    json.get(name);
-            }catch(Exception ex){
+            // ï¿½ï¿½Ò»ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½JSONObjectï¿½Ð²ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½×³ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            try {
+                json.get(name);
+            } catch (Exception ex) {
                 continue;
             }
-            if(json.get(name) != null && !"".equals(json.getString(name))){
-                // ¸ù¾Ý×Ö¶ÎµÄÀàÐÍ½«Öµ×ª»¯ÎªÏàÓ¦µÄÀàÐÍ£¬²¢ÉèÖÃµ½Éú³ÉµÄ¶ÔÏóÖÐ¡£
-                if(field.getType().equals(Long.class) || field.getType().equals(long.class)){
+            if (json.get(name) != null && !"".equals(json.getString(name))) {
+                // ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶Îµï¿½ï¿½ï¿½ï¿½Í½ï¿½Öµ×ªï¿½ï¿½Îªï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ÉµÄ¶ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½
+                if (field.getType().equals(Long.class) || field.getType().equals(long.class)) {
                     field.set(obj, Long.parseLong(json.getString(name)));
-                }else if(field.getType().equals(String.class)){
+                } else if (field.getType().equals(String.class)) {
                     field.set(obj, json.getString(name));
-                } else if(field.getType().equals(Double.class) || field.getType().equals(double.class)){
+                } else if (field.getType().equals(Double.class) || field.getType().equals(double.class)) {
                     field.set(obj, Double.parseDouble(json.getString(name)));
-                } else if(field.getType().equals(Integer.class) || field.getType().equals(int.class)){
+                } else if (field.getType().equals(Integer.class) || field.getType().equals(int.class)) {
                     field.set(obj, Integer.parseInt(json.getString(name)));
-                } else if(field.getType().equals(java.util.Date.class)){
+                } else if (field.getType().equals(java.util.Date.class)) {
                     field.set(obj, Date.parse(json.getString(name)));
-                }else{
+                } else {
                     continue;
                 }
             }

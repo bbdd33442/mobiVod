@@ -1,97 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#fafafa"
-    android:orientation="vertical" >
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="#fafafa"
+              android:orientation="vertical">
 
-<LinearLayout
-   	android:layout_width="wrap_content"
-    android:layout_height="wrap_content" 
-    android:orientation="horizontal">
-
-    <EditText
-		android:layout_width="248dp" 
-		android:layout_height="wrap_content" 
-		android:id="@+id/EditText_ip"
-		android:hint="@string/inputIp"
-		android:singleLine="true"
-		android:maxLength="15"
-		android:inputType="date"
-		/>
-</LinearLayout>
-
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" 
-    android:orientation="horizontal">
-    <Button
-        android:id="@+id/ButtonLED1On"
-        android:layout_width="124dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btnLED1On" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/ButtonLED1Off"
-        android:layout_width="124dp"
-        android:layout_height="wrap_content"
-        android:text="@string/btnLED1Off" />
+        <EditText
+            android:layout_width="248dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/EditText_ip"
+            android:hint="@string/inputIp"
+            android:singleLine="true"
+            android:maxLength="15"
+            android:inputType="date"
+            />
+    </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" 
-    android:orientation="horizontal">
-    
-    <Button
-        android:id="@+id/ButtonLED2On"
-        android:layout_width="124dp"
-        android:layout_height="wrap_content"
-        android:text="@string/btnLED2On" />
-    
-    <Button
-        android:id="@+id/ButtonLED2Off"
-        android:layout_width="124dp"
-        android:layout_height="wrap_content"
-        android:text="@string/btnLED2Off" />
-</LinearLayout>
+        <Button
+            android:id="@+id/ButtonLED1On"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnLED1On"/>
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" 
-    android:orientation="horizontal">
+        <Button
+            android:id="@+id/ButtonLED1Off"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnLED1Off"/>
 
-    <Button
-        android:id="@+id/ButtonLED3On"
-        android:layout_width="124dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:text="@string/btnLED3On" />
-    
-    <Button
-        android:id="@+id/ButtonLED3Off"
-        android:layout_width="124dp"
-        android:layout_height="wrap_content"
-        android:text="@string/btnLED3Off" />
-</LinearLayout>
+    </LinearLayout>
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" 
-    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/ButtonLED4On"
-        android:layout_width="124dp"
+        <Button
+            android:id="@+id/ButtonLED2On"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnLED2On"/>
+
+        <Button
+            android:id="@+id/ButtonLED2Off"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnLED2Off"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:text="@string/btnLED4On" />
-    
-    <Button
-        android:id="@+id/ButtonLED4Off"
-        android:layout_width="124dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ButtonLED3On"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:text="@string/btnLED3On"/>
+
+        <Button
+            android:id="@+id/ButtonLED3Off"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnLED3Off"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btnLED4Off" />
-</LinearLayout>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ButtonLED4On"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:text="@string/btnLED4On"/>
+
+        <Button
+            android:id="@+id/ButtonLED4Off"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnLED4Off"/>
+    </LinearLayout>
 </LinearLayout>

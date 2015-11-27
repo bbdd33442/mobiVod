@@ -4,9 +4,8 @@ import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 /**
- * Í¼Æ¬Òì²½ÏÂÔØÍê³Éºó»Øµ÷
- *
+ * Í¼Æ¬ï¿½ì²½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éºï¿½Øµï¿½
  */
 public interface OnImageDownload {
-	void onDownloadSucc(Bitmap bitmap,String c_url,ImageView imageView);
+    void onDownloadSucc(Bitmap bitmap, String c_url, ImageView imageView);
 }

@@ -9,37 +9,36 @@ import android.util.Log;
 import android.widget.ImageView;
 
 /**
-* ÔÚ4.0ÏµÍ³ÖÐÏÔÊ¾ÍøÂçÍ¼Æ¬
-*
-* @author Administrator
-*
-*/
+ * ï¿½ï¿½4.0ÏµÍ³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
+ *
+ * @author Administrator
+ */
 public class DownLoadImage extends AsyncTask<String, Void, Bitmap> {
-ImageView imageView;
+    ImageView imageView;
 
-public DownLoadImage(ImageView imageView) {
+    public DownLoadImage(ImageView imageView) {
 // TODO Auto-generated constructor stub
-this.imageView = imageView;
-}
+        this.imageView = imageView;
+    }
 
-@Override
-protected Bitmap doInBackground(String... urls) {
+    @Override
+    protected Bitmap doInBackground(String... urls) {
 // TODO Auto-generated method stub
-String url = urls[0];
-Bitmap tmpBitmap = null;
-try {
-InputStream is = new java.net.URL(url).openStream();
-tmpBitmap = BitmapFactory.decodeStream(is);
-} catch (Exception e) {
-e.printStackTrace();
-Log.i("test", e.getMessage());
-}
-return tmpBitmap;
-}
+        String url = urls[0];
+        Bitmap tmpBitmap = null;
+        try {
+            InputStream is = new java.net.URL(url).openStream();
+            tmpBitmap = BitmapFactory.decodeStream(is);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.i("test", e.getMessage());
+        }
+        return tmpBitmap;
+    }
 
-@Override
-protected void onPostExecute(Bitmap result) {
+    @Override
+    protected void onPostExecute(Bitmap result) {
 // TODO Auto-generated method stub
-imageView.setImageBitmap(result);
-}
+        imageView.setImageBitmap(result);
+    }
 }

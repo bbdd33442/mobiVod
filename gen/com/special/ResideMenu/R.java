@@ -7,27 +7,30 @@
 package com.special.ResideMenu;
 
 public final class R {
-	public static final class drawable {
-		public static final int ic_launcher = 0x7f020071;
-		public static final int shadow = 0x7f020096;
-		public static final int zixunnormal = 0x7f02009e;
-		public static final int zixunpressed = 0x7f02009f;
-	}
-	public static final class id {
-		public static final int iv_background = 0x7f07009f;
-		public static final int iv_icon = 0x7f0700a5;
-		public static final int iv_shadow = 0x7f0700a0;
-		public static final int layout_left_menu = 0x7f0700a2;
-		public static final int layout_right_menu = 0x7f0700a4;
-		public static final int sv_left_menu = 0x7f0700a1;
-		public static final int sv_right_menu = 0x7f0700a3;
-		public static final int tv_title = 0x7f0700a6;
-	}
-	public static final class layout {
-		public static final int residemenu = 0x7f03002b;
-		public static final int residemenu_item = 0x7f03002c;
-	}
-	public static final class string {
-		public static final int app_name = 0x7f060000;
-	}
+    public static final class drawable {
+        public static final int ic_launcher = 0x7f02001a;
+        public static final int shadow = 0x7f02003f;
+        public static final int zixunnormal = 0x7f020047;
+        public static final int zixunpressed = 0x7f020048;
+    }
+
+    public static final class id {
+        public static final int iv_background = 0x7f0b0064;
+        public static final int iv_icon = 0x7f0b006a;
+        public static final int iv_shadow = 0x7f0b0065;
+        public static final int layout_left_menu = 0x7f0b0067;
+        public static final int layout_right_menu = 0x7f0b0069;
+        public static final int sv_left_menu = 0x7f0b0066;
+        public static final int sv_right_menu = 0x7f0b0068;
+        public static final int tv_title = 0x7f0b006b;
+    }
+
+    public static final class layout {
+        public static final int residemenu = 0x7f030014;
+        public static final int residemenu_item = 0x7f030015;
+    }
+
+    public static final class string {
+        public static final int app_name = 0x7f060000;
+    }
 }
