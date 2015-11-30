@@ -1,12 +1,5 @@
 package edu.csu.movies;
 
-import java.util.HashMap;
-import java.util.List;
-
-import edu.csu.basetools.C;
-import edu.csu.basetools.WebImageBuilder;
-import edu.csu.mobiVod.R;
-
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +10,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.List;
+
+import edu.csu.basetools.C;
+import edu.csu.mobiVod.R;
 
 
 public class ListViewMovie extends BaseAdapter implements OnClickListener {

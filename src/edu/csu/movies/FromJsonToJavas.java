@@ -1,42 +1,42 @@
 package edu.csu.movies;
 
+import org.json.JSONObject;
+
 import java.lang.reflect.Field;
 import java.util.Date;
-
-import org.json.JSONObject;
 
 public class FromJsonToJavas {
 
     @SuppressWarnings("rawtypes")
-    public static Object fromJsonToJava(JSONObject json, Class pojo) throws Exception {
-        // Ê×ÏÈµÃµ½pojoËù¶¨ÒåµÄ×Ö¶Î
-        Field[] fields = pojo.getDeclaredFields();
-        // ¸ù¾İ´«ÈëµÄClass¶¯Ì¬Éú³Épojo¶ÔÏó
+    public static Object fromJsonToJava(JSONObject json,Class pojo) throws Exception{
+        // é¦–å…ˆå¾—åˆ°pojoæ‰€å®šä¹‰çš„å­—æ®µ
+        Field [] fields = pojo.getDeclaredFields();
+        // æ ¹æ®ä¼ å…¥çš„ClassåŠ¨æ€ç”Ÿæˆpojoå¯¹è±¡
         Object obj = pojo.newInstance();
-        for (Field field : fields) {
-            // ÉèÖÃ×Ö¶Î¿É·ÃÎÊ£¨±ØĞë£¬·ñÔò±¨´í£©
+        for(Field field: fields){
+            // è®¾ç½®å­—æ®µå¯è®¿é—®ï¼ˆå¿…é¡»ï¼Œå¦åˆ™æŠ¥é”™ï¼‰
             field.setAccessible(true);
-            // µÃµ½×Ö¶ÎµÄÊôĞÔÃû
+            // å¾—åˆ°å­—æ®µçš„å±æ€§å
             String name = field.getName();
-            // ÕâÒ»¶ÎµÄ×÷ÓÃÊÇÈç¹û×Ö¶ÎÔÚJSONObjectÖĞ²»´æÔÚ»áÅ×³öÒì³££¬Èç¹û³öÒì³££¬ÔòÌø¹ı¡£
-            try {
+            // è¿™ä¸€æ®µçš„ä½œç”¨æ˜¯å¦‚æœå­—æ®µåœ¨JSONObjectä¸­ä¸å­˜åœ¨ä¼šæŠ›å‡ºå¼‚å¸¸ï¼Œå¦‚æœå‡ºå¼‚å¸¸ï¼Œåˆ™è·³è¿‡ã€‚
+            try{
                 json.get(name);
-            } catch (Exception ex) {
+            }catch(Exception ex){
                 continue;
             }
-            if (json.get(name) != null && !"".equals(json.getString(name))) {
-                // ¸ù¾İ×Ö¶ÎµÄÀàĞÍ½«Öµ×ª»¯ÎªÏàÓ¦µÄÀàĞÍ£¬²¢ÉèÖÃµ½Éú³ÉµÄ¶ÔÏóÖĞ¡£
-                if (field.getType().equals(Long.class) || field.getType().equals(long.class)) {
+            if(json.get(name) != null && !"".equals(json.getString(name))){
+                // æ ¹æ®å­—æ®µçš„ç±»å‹å°†å€¼è½¬åŒ–ä¸ºç›¸åº”çš„ç±»å‹ï¼Œå¹¶è®¾ç½®åˆ°ç”Ÿæˆçš„å¯¹è±¡ä¸­ã€‚
+                if(field.getType().equals(Long.class) || field.getType().equals(long.class)){
                     field.set(obj, Long.parseLong(json.getString(name)));
-                } else if (field.getType().equals(String.class)) {
+                }else if(field.getType().equals(String.class)){
                     field.set(obj, json.getString(name));
-                } else if (field.getType().equals(Double.class) || field.getType().equals(double.class)) {
+                } else if(field.getType().equals(Double.class) || field.getType().equals(double.class)){
                     field.set(obj, Double.parseDouble(json.getString(name)));
-                } else if (field.getType().equals(Integer.class) || field.getType().equals(int.class)) {
+                } else if(field.getType().equals(Integer.class) || field.getType().equals(int.class)){
                     field.set(obj, Integer.parseInt(json.getString(name)));
-                } else if (field.getType().equals(java.util.Date.class)) {
+                } else if(field.getType().equals(java.util.Date.class)){
                     field.set(obj, Date.parse(json.getString(name)));
-                } else {
+                }else{
                     continue;
                 }
             }

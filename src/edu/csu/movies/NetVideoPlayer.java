@@ -1,9 +1,5 @@
 package edu.csu.movies;
 
-import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
@@ -14,6 +10,10 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.SeekBar;
+
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class NetVideoPlayer implements OnBufferingUpdateListener,
         OnCompletionListener, MediaPlayer.OnPreparedListener,
@@ -71,15 +71,15 @@ public class NetVideoPlayer implements OnBufferingUpdateListener,
 
             mediaPlayer.setDataSource(videoUrl);
             mediaPlayer.prepare();
-            //mediaPlayer.start();  
+            //mediaPlayer.start();
         } catch (IllegalArgumentException e) {
-            // TODO Auto-generated catch block  
+            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IllegalStateException e) {
-            // TODO Auto-generated catch block  
+            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block  
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -131,12 +131,12 @@ public class NetVideoPlayer implements OnBufferingUpdateListener,
         if (videoHeight != 0 && videoWidth != 0) {
             arg0.start();
         }
-        Log.e("mediaPlayer", "onPrepared");
+        Log.e("mediaPlayer", "onPrepared, duration: " + arg0.getDuration());
     }
 
     @Override
     public void onCompletion(MediaPlayer arg0) {
-        // TODO Auto-generated method stub  
+        // TODO Auto-generated method stub
 
     }
 
@@ -148,4 +148,4 @@ public class NetVideoPlayer implements OnBufferingUpdateListener,
 
     }
 
-}  
+}

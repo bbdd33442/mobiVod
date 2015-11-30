@@ -33,4 +33,6 @@
     <string name="bgtext">android wifi</string>
     <string name="ipnameaddr">请输入开发板IP地址</string>
 
+    <string name="splash_des">splash image</string>
+    <string name="tip">No devices, please make sure the devices are in the same wifi network, and retry later.</string>
 </resources>

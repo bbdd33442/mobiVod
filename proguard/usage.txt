@@ -2034,7 +2034,7 @@ edu.csu.movies.NetVideoPlayer:
 edu.csu.movies.ResultMessage
 edu.csu.movies.SendPost:
     20:59:public java.lang.String sendPostParams(java.lang.String,java.lang.String)
-edu.csu.remote.RemoteActivity:
+edu.csu.mobiVod.Remote.RemoteActivity:
     38:43:private java.util.ArrayList getListViewData()
 edu.csu.xlistview.XListView:
     private static final int SCROLLBACK_HEADER

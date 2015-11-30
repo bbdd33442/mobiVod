@@ -1,11 +1,5 @@
 package edu.csu.movies;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -14,22 +8,32 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.MediaStore.MediaColumns;
 import android.provider.MediaStore.Video.VideoColumns;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.csu.basetools.BaseActivity;
 import edu.csu.datebase.DBhelp;
+import edu.csu.dlna.service.ResMap;
 import edu.csu.mobiVod.R;
 import edu.csu.xlistview.XListView;
 import edu.csu.xlistview.XListView.IXListViewListener;
 
 public class LocalMovie extends BaseActivity implements IXListViewListener {
+    private static final String TAG = "LocalMovie";
     XListView xListView;
     private ArrayList<HashMap<String, String>> list;
     private ListViewMovie listItemAdapter;
@@ -51,10 +55,13 @@ public class LocalMovie extends BaseActivity implements IXListViewListener {
         list = new ArrayList<HashMap<String, String>>();
         while (c.moveToNext()) {
             map = new HashMap<String, String>();
+            map.put("movielocalid", c.getString(0));
             map.put("movietitle", c.getString(1));
             map.put("movielasttime", c.getString(4));
             map.put("moviefile", c.getString(5));
             list.add(map);
+            Log.d(TAG, String.format("id: %s, title: %s, path: %s", c.getString(0), c.getString(1), c.getString(5)));
+            ResMap.put(PlayLocalMovies.LOCAL_MOVIE_PREFIX + "-" +c.getString(0), c.getString(5));
             count++;//item��������
         }
         c.close();
@@ -69,7 +76,9 @@ public class LocalMovie extends BaseActivity implements IXListViewListener {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent();
-                    intent.putExtra("path", list.get(position - 1).get("moviefile"));
+                    Map<String, String> item = list.get(position - 1);
+                    intent.putExtra("path", item.get("moviefile"));
+                    intent.putExtra("id",  item.get("movielocalid"));
                     intent.setClass(LocalMovie.this, PlayLocalMovies.class);
                     startActivity(intent);
 

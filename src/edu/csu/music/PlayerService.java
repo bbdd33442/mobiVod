@@ -39,7 +39,7 @@ public class PlayerService extends Service {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     // TODO Auto-generated method stub
-
+                    mediaPlayer.stop();
                 }
             });
         } catch (Exception e) {

@@ -1,12 +1,12 @@
 package edu.csu.mobiVod;
 
-import android.view.KeyEvent;
-import android.widget.RadioGroup;
-import android.widget.TabHost;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TabHost;
 
 @SuppressWarnings("deprecation")
 public class MediaMainActivity extends TabActivity {

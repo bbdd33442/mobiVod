@@ -4184,22 +4184,22 @@ edu.csu.movies.PlayeNetVideo$SeekBarChangeEvent -> edu.csu.movies.u:
     void onStopTrackingTouch(android.widget.SeekBar) -> onStopTrackingTouch
 edu.csu.movies.SendPost -> edu.csu.movies.v:
     android.content.Context context -> a
-edu.csu.remote.GridAdapter -> edu.csu.remote.a:
+edu.csu.mobiVod.Remote.GridAdapter -> edu.csu.mobiVod.Remote.a:
     java.util.ArrayList mItems -> a
     android.content.Context mContext -> b
     int getCount() -> getCount
     java.lang.Object getItem(int) -> getItem
     long getItemId(int) -> getItemId
     android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-edu.csu.remote.Item -> edu.csu.remote.b:
+edu.csu.mobiVod.Remote.Item -> edu.csu.mobiVod.Remote.b:
     java.lang.String text -> a
     int resId -> b
-edu.csu.remote.RemoteActivity -> edu.csu.remote.RemoteActivity:
+edu.csu.mobiVod.Remote.RemoteActivity -> edu.csu.mobiVod.Remote.RemoteActivity:
     android.content.Context ctx -> a
     android.widget.GridView gridView -> b
     void onCreate(android.os.Bundle) -> onCreate
     void init() -> a
-edu.csu.remote.SelectPicPopupWindow -> edu.csu.remote.SelectPicPopupWindow:
+edu.csu.mobiVod.Remote.SelectPicPopupWindow -> edu.csu.mobiVod.Remote.SelectPicPopupWindow:
     android.widget.Button btn_delete_remote -> a
     android.widget.Button btn_edit_remote -> b
     android.widget.Button btn_cancel -> c
@@ -4207,10 +4207,10 @@ edu.csu.remote.SelectPicPopupWindow -> edu.csu.remote.SelectPicPopupWindow:
     void onCreate(android.os.Bundle) -> onCreate
     boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
     void onClick(android.view.View) -> onClick
-edu.csu.remote.SelectPicPopupWindow$1 -> edu.csu.remote.c:
-    edu.csu.remote.SelectPicPopupWindow this$0 -> a
+edu.csu.mobiVod.Remote.SelectPicPopupWindow$1 -> edu.csu.mobiVod.Remote.c:
+    edu.csu.mobiVod.Remote.SelectPicPopupWindow this$0 -> a
     void onClick(android.view.View) -> onClick
-edu.csu.remote.SquareGridview -> edu.csu.remote.SquareGridview:
+edu.csu.mobiVod.Remote.SquareGridview -> edu.csu.mobiVod.Remote.SquareGridview:
     void onMeasure(int,int) -> onMeasure
 edu.csu.xlistview.XListView -> edu.csu.xlistview.XListView:
     float mLastY -> a

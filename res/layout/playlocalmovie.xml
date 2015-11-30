@@ -12,9 +12,15 @@
         <VideoView
             android:id="@+id/playlocal_videoView"
             android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:layout_gravity="center"
-            android:fitsSystemWindows="true"
-            android:layout_height="fill_parent"/>
+            android:fitsSystemWindows="true"/>
+
+<!--        <edu.csu.movies.view.MyMediaController
+            android:id="@+id/playlocal_controller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"/>-->
     </FrameLayout>
 
 

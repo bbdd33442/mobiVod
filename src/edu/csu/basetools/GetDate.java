@@ -1,38 +1,38 @@
 package edu.csu.basetools;
 
+import android.annotation.SuppressLint;
+import android.text.format.Time;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
-
-import android.annotation.SuppressLint;
-import android.text.format.Time;
 
 @SuppressLint("SimpleDateFormat") public class GetDate {
 	public String GetYearMonDayWeek(){
 		String mYear,mMonth, mDay, mWay;
         final Calendar c = Calendar.getInstance();
         c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
-        mYear = String.valueOf(c.get(Calendar.YEAR)); // »ñÈ¡µ±Ç°Äê·İ
-        mMonth = String.valueOf(c.get(Calendar.MONTH) + 1);// »ñÈ¡µ±Ç°ÔÂ·İ
-        mDay = String.valueOf(c.get(Calendar.DAY_OF_MONTH));// »ñÈ¡µ±Ç°ÔÂ·İµÄÈÕÆÚºÅÂë
+        mYear = String.valueOf(c.get(Calendar.YEAR)); // è·å–å½“å‰å¹´ä»½
+        mMonth = String.valueOf(c.get(Calendar.MONTH) + 1);// è·å–å½“å‰æœˆä»½
+        mDay = String.valueOf(c.get(Calendar.DAY_OF_MONTH));// è·å–å½“å‰æœˆä»½çš„æ—¥æœŸå·ç 
         mWay = String.valueOf(c.get(Calendar.DAY_OF_WEEK));
         if("1".equals(mWay)){
-            mWay ="ÈÕ";
+            mWay ="æ—¥";
         }else if("2".equals(mWay)){
-            mWay ="Ò»";
+            mWay ="ä¸€";
         }else if("3".equals(mWay)){
-            mWay ="¶ş";
+            mWay ="äºŒ";
         }else if("4".equals(mWay)){
-            mWay ="Èı";
+            mWay ="ä¸‰";
         }else if("5".equals(mWay)){
-            mWay ="ËÄ";
+            mWay ="å››";
         }else if("6".equals(mWay)){
-            mWay ="Îå";
+            mWay ="äº”";
         }else if("7".equals(mWay)){
-            mWay ="Áù";
+            mWay ="å…­";
         }
-        return "\t"+mYear + "Äê" + mMonth + "ÔÂ" + mDay+"ÈÕ"+"\tĞÇÆÚ"+mWay;
+        return "\t"+mYear + "å¹´" + mMonth + "æœˆ" + mDay+"æ—¥"+"\tæ˜ŸæœŸ"+mWay;
     }
 
     public String GetYear() {

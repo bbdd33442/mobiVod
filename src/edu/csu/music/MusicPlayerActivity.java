@@ -103,7 +103,8 @@ public class MusicPlayerActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        np.stop();
+        if (np != null)
+            np.stop();
     }
 
 

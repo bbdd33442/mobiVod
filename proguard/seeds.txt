@@ -1592,15 +1592,15 @@ edu.csu.movies.PlayLocalMovies
 edu.csu.movies.PlayLocalMovies: PlayLocalMovies()
 edu.csu.movies.PlayeNetVideo
 edu.csu.movies.PlayeNetVideo: PlayeNetVideo()
-edu.csu.remote.RemoteActivity
-edu.csu.remote.RemoteActivity: RemoteActivity()
-edu.csu.remote.SelectPicPopupWindow
-edu.csu.remote.SelectPicPopupWindow: SelectPicPopupWindow()
-edu.csu.remote.SelectPicPopupWindow: void onClick(android.view.View)
-edu.csu.remote.SquareGridview
-edu.csu.remote.SquareGridview: SquareGridview(android.content.Context,android.util.AttributeSet,int)
-edu.csu.remote.SquareGridview: SquareGridview(android.content.Context,android.util.AttributeSet)
-edu.csu.remote.SquareGridview: SquareGridview(android.content.Context)
+edu.csu.mobiVod.Remote.RemoteActivity
+edu.csu.mobiVod.Remote.RemoteActivity: RemoteActivity()
+edu.csu.mobiVod.Remote.SelectPicPopupWindow
+edu.csu.mobiVod.Remote.SelectPicPopupWindow: SelectPicPopupWindow()
+edu.csu.mobiVod.Remote.SelectPicPopupWindow: void onClick(android.view.View)
+edu.csu.mobiVod.Remote.SquareGridview
+edu.csu.mobiVod.Remote.SquareGridview: SquareGridview(android.content.Context,android.util.AttributeSet,int)
+edu.csu.mobiVod.Remote.SquareGridview: SquareGridview(android.content.Context,android.util.AttributeSet)
+edu.csu.mobiVod.Remote.SquareGridview: SquareGridview(android.content.Context)
 edu.csu.xlistview.XListView
 edu.csu.xlistview.XListView: XListView(android.content.Context)
 edu.csu.xlistview.XListView: XListView(android.content.Context,android.util.AttributeSet)
